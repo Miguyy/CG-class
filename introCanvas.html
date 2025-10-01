@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro Canvas</title>
+    <style>
+        body,html{
+            background-color: burlywood;
+        }
+
+        canvas{
+            border: 1px solid black
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas"></canvas>
+    <script>
+        let myCanvas = document.getElementById("myCanvas")
+        let ctx = myCanvas.getContext("2d") //defines if 2d or 3d
+        
+        let W = myCanvas.width = 400
+        let H = myCanvas.height = 400
+
+        ctx.fillStyle = "green"
+        ctx.fillRect(0, 0, W, H)
+        
+        ctx.fillStyle = "red"
+        ctx.fillRect(W/ 2 - 50, H/2 - 50, 100, 100) //centrar
+       /*  ctx.fillRect(10, 10, 150, 100) */ //just creates an rectangle (2 coordenadas, comprimento, altura)
+        ctx.globalAlpha = 0.5 // opacidade
+        ctx.strokeStyle = "purple" //ou utilizar rgba
+        ctx.lineWidth = 5
+        ctx.strokeRect(150, 50, 100, 20)
+
+        ctx.clearRect(175, 75, 50, 50)
+        
+    </script>
+</body>
+</html>

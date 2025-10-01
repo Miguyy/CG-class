@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Flags</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+
+        button {
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="text-align: center;">
+        <h1>Draw Flags</h1>
+        <div style="margin-bottom: 10px;">
+            <button onclick="drawGermany()">Germany</button>
+            <button onclick="drawFrance()">France</button>
+            <button onclick="drawSweden()">Sweden</button>
+            <button onclick="drawSwitzerland()">Switzerland</button>
+        </div>
+        <canvas id="flagCanvas" width="300" height="200"></canvas>
+    </div>
+
+
+    <script>
+        const canvas = document.getElementById('flagCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let W = canvas.width;
+        let H = canvas.height;
+
+        function drawGermany() {
+            ctx.fillStyle = "black"
+            ctx.fillRect(0, 0, 300, 70)
+            ctx.fillStyle = "red"
+            ctx.fillRect(0, 60, 300, 70)
+            ctx.fillStyle = "yellow"
+            ctx.fillRect(0, 130, 300, 70)
+        }
+
+        function drawFrance() {
+            ctx.fillStyle = "blue"
+            ctx.fillRect(0, 0, W/3, H)
+            ctx.fillStyle = "white"
+            ctx.fillRect(100, 0, W/3, H)
+            ctx.fillStyle = "red"
+            ctx.fillRect(200, 0, W/3, H)
+        }
+
+        function drawSweden() {
+            ctx.fillStyle = "yellow"
+            ctx.fillRect(0, 0, W, H)
+            /* ctx.fillStyle = "yellow"
+            ctx.fillRect(0, 0, W/2, H/2)
+            ctx.fillStyle = "yellow"
+            ctx.fillRect(0, 0, W/2, H/2) */
+
+            ctx.fillStyle = "blue" 
+            ctx.fillRect(0, 0, 100, 80)
+            ctx.fillStyle = "blue" 
+            ctx.fillRect(0, 125, 100, 80)
+
+            ctx.fillStyle = "blue" 
+            ctx.fillRect(130, 0, 180, 80)
+            
+            ctx.fillStyle = "blue" 
+            ctx.fillRect(130, 125, 180, 80)
+        }
+
+        function drawSwitzerland() {
+            ctx.fillStyle = "red"
+            ctx.fillRect(0, 0, W, H)
+
+            ctx.fillStyle = "white" 
+            ctx.fillRect(W/2 - 70, H/2 - 25, 140, 50)
+
+            ctx.fillStyle = "white" 
+            ctx.fillRect(W/2 - 25, H/2 - 70, 50, 140)
+
+            ctx.clearRect(0, 0, 50, 200)
+            ctx.clearRect(250, 0, 50, 200)
+
+        }
+    </script>
+</body>
+
+</html>
