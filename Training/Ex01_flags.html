@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canvas Flags</title>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+
+      button {
+        margin: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div style="text-align: center">
+      <h1>Draw Flags</h1>
+      <div style="margin-bottom: 10px">
+        <button onclick="drawGermany()">Germany</button>
+        <button onclick="drawFrance()">France</button>
+        <button onclick="drawSweden()">Sweden</button>
+        <button onclick="drawSwitzerland()">Switzerland</button>
+      </div>
+      <canvas id="flagCanvas" width="300" height="200"></canvas>
+    </div>
+
+    <script>
+      const canvas = document.getElementById("flagCanvas"); //canvas variable that consists using the Id of the canvas tag
+      const ctx = canvas.getContext("2d"); //just defines if the canvas will be 2d or 3d
+
+      let W = canvas.width;
+      let H = canvas.height;
+
+      function drawGermany() {
+        ctx.fillStyle = "black"; //fill the canvas with a certain color
+        ctx.fillRect(0, 0, 300, 70); //fill the canvas with a certain rectangle size (x,y,W,H)
+        ctx.fillStyle = "red";
+        ctx.fillRect(0, 65, 300, 70);
+        ctx.fillStyle = "yellow";
+        ctx.fillRect(0, 130, 300, 70);
+      }
+
+      function drawFrance() {
+        ctx.fillStyle = "blue";
+        ctx.fillRect(0, 0, 100, 300);
+        ctx.fillStyle = "white";
+        ctx.fillRect(100, 0, 100, 300);
+        ctx.fillStyle = "red";
+        ctx.fillRect(200, 0, 100, 300);
+      }
+
+      function drawSweden() {
+        ctx.fillStyle = "CornflowerBlue";
+        ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = "yellow";
+        ctx.fillRect(100, 0, 40, H);
+        ctx.fillStyle = "yellow";
+        ctx.fillRect(0, H / 2 - 20, W, 40);
+      }
+
+      function drawSwitzerland() {
+        ctx.fillStyle = "red";
+        ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = "white";
+        ctx.fillRect(W / 2 - 70, H / 2 - 25, 140, 50); //reduces to half Ex: W = 140 then the positioning is half minus the Width half
+        ctx.fillStyle = "white";
+        ctx.fillRect(W / 2 - 25, H / 2 - 70, 50, 140);
+
+        ctx.clearRect(0, 0, 70, 300);
+        ctx.clearRect(230, 0, 70, 300);
+      }
+    </script>
+  </body>
+</html>

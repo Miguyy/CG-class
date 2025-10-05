@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flags</title>
+  </head>
+  <body>
+    <canvas
+      id="canvas1"
+      width="400"
+      height="250"
+      style="border: 1px solid #000"
+    ></canvas>
+
+    <canvas
+      id="canvas2"
+      width="400"
+      height="250"
+      style="border: 1px solid #000"
+    ></canvas>
+
+    <script>
+      const canvas2 = document.getElementById("canvas2");
+      const ctx2 = canvas2.getContext("2d");
+
+      let W2 = canvas2.width;
+      let H2 = canvas2.height;
+
+      function desenharJapao() {
+        // Fundo branco
+        ctx2.fillStyle = "white";
+        ctx2.fillRect(0, 0, W2, H2);
+
+        // Círculo vermelho
+        ctx2.beginPath();
+        ctx2.arc(W2 / 2, H2 / 2, 60, 0, 2 * Math.PI);
+        ctx2.fillStyle = "red";
+        ctx2.fill();
+      }
+
+      desenharJapao();
+    </script>
+  </body>
+</html>

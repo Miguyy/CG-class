@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>PATHS & LINES</title>
+    <style>
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <input type="button" value="EXERCISE 1" onclick="ex1()" />
+    <input type="button" value="EXERCISE 2" onclick="ex2()" />
+    <input type="button" value="EXERCISE 3" onclick="ex3()" />
+    <input type="button" value="EXERCISE 4" onclick="ex4()" />
+    <canvas
+      id="myCanvas"
+      width="500"
+      height="200"
+      style="border: solid 3px orange"
+    >
+      Your browser does not support HTML5 Canvas.
+    </canvas>
+
+    <script>
+      const canvas = document.querySelector("#myCanvas");
+      const ctx = canvas.getContext("2d");
+
+      function ex1() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height); //erase Canvas
+
+        //TODO
+
+        //create the rectangle
+        //move the rectangle
+        //fill the first rectangle with blue
+        //create the second
+        //move the rectangle
+        //create the second using green stroke
+
+        //first rectangle
+        ctx.beginPath();
+        ctx.moveTo(20, 90); //X Y
+        ctx.lineTo(150, 90);
+        ctx.lineTo(150, 10);
+        ctx.lineTo(20, 10);
+        ctx.lineTo(20, 90);
+        ctx.fillStyle = "blue";
+        ctx.fill();
+        ctx.strokeStyle = "blue";
+        ctx.stroke();
+        ctx.closePath();
+
+        //second rectangle
+        ctx.beginPath();
+        ctx.moveTo(40, 110);
+        ctx.lineTo(170, 110);
+        ctx.lineTo(170, 30);
+        ctx.lineTo(40, 30);
+        ctx.lineTo(40, 110);
+        ctx.strokeStyle = "green";
+        ctx.stroke();
+        ctx.closePath();
+      }
+
+      function ex2() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height); //erase Canvas
+
+        //TODO
+
+        //red stroke
+
+        ctx.beginPath();
+        ctx.moveTo(50, 25);
+        ctx.lineTo(50, 125);
+        ctx.lineTo(150, 25);
+        ctx.lineTo(150, 125);
+        ctx.lineTo(250, 25);
+        ctx.lineTo(250, 125);
+
+        ctx.strokeStyle = "red";
+        ctx.stroke();
+        ctx.closePath();
+      }
+
+      function ex3() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height); //erase Canvas
+
+        //TODO
+
+        //need to use rect() do draw the base of the house
+        //create 2 lines for the roof
+        //linewidth(1)
+
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 6;
+        ctx.strokeRect(120, 90, 60, 60);
+        ctx.beginPath();
+        ctx.moveTo(120, 90);
+        ctx.lineTo(150, 60);
+        ctx.lineTo(180, 90);
+        ctx.stroke();
+        ctx.closePath();
+      }
+
+      //CANVAS SIZE
+      const W = canvas.width,
+        H = canvas.height;
+      function ex4() {
+        ctx.clearRect(0, 0, W, H); //erase Canvas
+        render(); // invoca a função de animação
+      }
+
+      function render() {
+        //TODO
+      }
+
+      //helper function
+      function getRandomColor() {
+        let r = Math.floor(Math.random() * 256);
+        let g = Math.floor(Math.random() * 256);
+        let b = Math.floor(Math.random() * 256);
+
+        return `rgb(${r},${g},${b})`;
+      }
+    </script>
+  </body>
+</html>
