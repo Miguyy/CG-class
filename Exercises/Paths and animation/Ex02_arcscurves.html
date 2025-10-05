@@ -133,9 +133,19 @@
         //TODO
 
         ctx.moveTo(150, 60);
-
         ctx.bezierCurveTo(150, 30, 120, 30, 90, 30); //just need to look at the grid (point 0, point 1, x, y)
-        ctx.bezierCurveTo(90, 30, 30, 60, 30, 90);
+
+        ctx.moveTo(90, 30);
+        ctx.bezierCurveTo(60, 30, 30, 60, 30, 90);
+
+        /* ctx.moveTo(30, 90);
+        ctx.bezierCurveTo(60, 30, 150, 210, 150, 240); */
+
+        ctx.moveTo(210, 30);
+        ctx.bezierCurveTo(240, 30, 270, 60, 270, 90);
+
+        ctx.moveTo(150, 60);
+        ctx.bezierCurveTo(150, 30, 180, 30, 210, 30);
 
         ctx.strokeStyle = "red";
         ctx.stroke();
