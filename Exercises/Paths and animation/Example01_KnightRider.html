@@ -1,64 +1,85 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Knight Rider</title>
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: auto;
+        background: #333333;
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <title>Knight Rider</title>
-  <style>
-    html,
-    body {
-      width: 100%;
-      height: auto;
-      background: #333333;
-    }
+      canvas {
+        margin: auto;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    </style>
+  </head>
 
-    canvas {
-      margin: auto;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-    }
-  </style>
-</head>
+  <body>
+    <canvas
+      id="myCanvas"
+      width="600"
+      height="50"
+      style="border: solid 3px black"
+    ></canvas>
 
-<body>
-  <canvas id="myCanvas" width="600" height="50" style="border:solid 3px black"></canvas>
+    <script>
+      const canvas = document.querySelector("#myCanvas");
+      const ctx = canvas.getContext("2d");
 
-  <script>
-    const canvas = document.querySelector("#myCanvas");
-    const ctx = canvas.getContext("2d");
+      //CANVAS SIZE
+      const W = canvas.width,
+        H = canvas.height;
 
-    //CANVAS SIZE
-    const W = canvas.width, H = canvas.height;
+      let x = 0;
+      let moveRight = true;
 
-    let x = 0; let moveRight = true;
+      function render() {
+        //CLEAR CANVAS
+        ctx.fillStyle = "#333333";
+        ctx.globalAlpha = 0.5;
+        ctx.fillRect(0, 0, W, H);
+        // UPDATE COLOR
+        /* ctx.fillStyle = getRandomColor(); */
+        // DRAW
+        ctx.fillStyle = "red";
+        ctx.globalAlpha = 1;
+        ctx.fillRect(x, 0, 50, 50);
 
-    function render() {
-      //CLEAR CANVAS
-      ctx.clearRect(0, 0, W, H);
-      // UPDATE COLOR
-      ctx.fillStyle = getRandomColor();
-      // DRAW
-      ctx.fillRect(x, 0, 50, 50);
-    }
+        //UPDATE POSITION
+        /* x += 50; */
 
-    window.onload = function () {
-      window.setInterval(render, 1000 / 12);
-    };
+        if (moveRight) {
+          x += 50;
+        } else {
+          x -= 50;
+        }
+        if (x >= W - 50 || x <= 0) {
+          moveRight = !moveRight;
+        }
 
+        /* requestAnimationFrame(render) */
+      }
 
-    //helper function
-    function getRandomColor() {
-      let r = Math.floor(Math.random() * 256);
-      let g = Math.floor(Math.random() * 256);
-      let b = Math.floor(Math.random() * 256);
+      window.onload = function () {
+        window.setInterval(render, 1000 / 10); //frames per second
+      };
 
-      return `rgb(${r},${g},${b})`;
-    }
+      //helper function
+      function getRandomColor() {
+        let r = Math.floor(Math.random() * 256);
+        let g = Math.floor(Math.random() * 256);
+        let b = Math.floor(Math.random() * 256);
 
-  </script>
-</body>
-
+        return `rgb(${r},${g},${b})`;
+      }
+    </script>
+  </body>
 </html>
