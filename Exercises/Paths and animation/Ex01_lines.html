@@ -109,20 +109,37 @@
       const W = canvas.width,
         H = canvas.height;
       function ex4() {
-        ctx.clearRect(0, 0, W, H); //erase Canvas
-        render(); // invoca a função de animação
+        ctx.clearRect(0, 0, W, H);
+        animationRunning = true;
+        render();
       }
 
       function render() {
-        //TODO
+        if (!animationRunning) return;
+
+        let cx = W / 2;
+        let cy = H / 2;
+        let x = Math.random() * W;
+        let y = Math.random() * H;
+
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(x, y);
+        ctx.strokeStyle = getRandomColor();
+        ctx.stroke();
+
+        requestAnimationFrame(render);
       }
 
-      //helper function
+      // ---------- STOP ----------
+      function stopAnimation() {
+        animationRunning = false;
+      }
+
       function getRandomColor() {
         let r = Math.floor(Math.random() * 256);
         let g = Math.floor(Math.random() * 256);
         let b = Math.floor(Math.random() * 256);
-
         return `rgb(${r},${g},${b})`;
       }
     </script>
