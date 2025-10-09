@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <title>INTERACTIONS</title>
+  </head>
+
+  <body>
+    <canvas
+      id="canvas"
+      width="300"
+      height="250"
+      style="border: solid 1px green"
+    >
+      Your browser does not support HTML5 Canvas.
+    </canvas>
+
+    <script>
+      const canvas = document.querySelector("#canvas");
+      const ctx = canvas.getContext("2d");
+
+      const W = canvas.width;
+      const H = canvas.height;
+
+      //circle properties
+      ctx.fillStyle = "blue";
+      const R = 20;
+
+      let x = W / 2;
+      let y = H / 2;
+
+      let rightArrow = false;
+      let leftArrow = false;
+      let upArrow = false;
+      let downArrow = false;
+      let ballSpeed = 2;
+
+      function drawBall() {
+        ctx.beginPath();
+        ctx.arc(x, y, R, 0, Math.PI * 2);
+        ctx.fillStyle = "blue";
+        ctx.fill();
+        ctx.closePath();
+      }
+
+      requestAnimationFrame(render);
+
+      onkeydown = (e) => {
+        if (e.key == "ArrowRight") {
+          rightArrow = true;
+        }
+        if (e.key == "ArrowLeft") {
+          leftArrow = true;
+        }
+        if (e.key == "ArrowUp") {
+          upArrow = true;
+        }
+        if (e.key == "ArrowDown") {
+          downArrow = true;
+        }
+      };
+
+      onkeyup = (e) => {
+        if (e.key == "ArrowRight") {
+          rightArrow = false;
+        }
+        if (e.key == "ArrowLeft") {
+          leftArrow = false;
+        }
+        if (e.key == "ArrowUp") {
+          upArrow = false;
+        }
+        if (e.key == "ArrowDown") {
+          downArrow = false;
+        }
+      };
+
+      function render() {
+        ctx.clearRect(0, 0, W, H);
+
+        if (rightArrow && x < W - R) {
+          x += ballSpeed;
+        }
+        if (leftArrow && x > R) {
+          x -= ballSpeed;
+        }
+        if (upArrow && y > R) {
+          y -= ballSpeed;
+        }
+        if (downArrow && y < H - R) {
+          y += ballSpeed;
+        }
+
+        ctx.beginPath();
+        ctx.arc(x, y, R, 0, Math.PI * 2);
+        ctx.fillStyle = "blue";
+        ctx.fill();
+        ctx.closePath();
+
+        requestAnimationFrame(render);
+      }
+
+      // TODO
+    </script>
+  </body>
+</html>
