@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>IMAGES</title>
+  </head>
+
+  <body>
+    <canvas
+      id="myCanvas"
+      width="500"
+      height="500"
+      style="border: solid 2px black"
+    >
+      Your browser does not support HTML5 Canvas.
+    </canvas>
+
+    <script>
+      const canvas = document.querySelector("#myCanvas");
+      const ctx = canvas.getContext("2d");
+
+      const W = canvas.width;
+      const H = canvas.height;
+
+      //create a generic JavaScript image object
+      let img = new Image();
+      //define the source (local image file)
+      img.src = "images/ESMAD_rave_1819.jpg";
+
+      //wait for the image load event
+      img.onload = function () {
+        //draw the full image
+        ctx.drawImage(img, (W - img.width) / 2, (H - img.height) / 2);
+      };
+
+      canvas.addEventListener("mousemove", (event) => {
+        const e = event;
+        let mouseX = e.offsetX;
+        let mouseY = e.offsetY;
+        const pixel = ctx.getImageData(mouseX, mouseY, 1, 1).data;
+        ctx.fillStyle = `rgba(${pixel[0]},${pixel[1]},${pixel[2]},${
+          pixel[3] / 255
+        })`;
+        ctx.fillRect(0, 0, W, H);
+        ctx.drawImage(img, (W - img.width) / 2, (H - img.height) / 2);
+      });
+
+      //changes the background color
+      /* canvas.addEventListener("mousemove", (event) => { 
+        const rect = canvas.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        const pixel = ctx.getImageData(x, y, 1, 1);
+        const data = pixel.data;
+        const rgba = `rgba(${data[0]},${data[1]},${data[2]},${data[3] / 255})`;
+        document.body.style.backgroundColor = rgba;
+      }); */
+    </script>
+  </body>
+</html>
